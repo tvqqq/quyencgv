@@ -38,19 +38,19 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#E0E0E0] antialiased font-sans selection:bg-[#E71A0F] selection:text-white pb-8">
       {/* High Density Top Navbar */}
-      <header className="bg-[#121212] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+      <header className="bg-[#121212] border-b border-zinc-800 sticky top-0 z-50 shadow-md py-2.5 sm:py-3">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <img
               src={quyenLogoImg}
               alt="Logo Quyền bán vé CGV"
-              className="w-8 h-8 rounded-lg object-cover border border-cyan-500/60 shadow-md shadow-cyan-900/30"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-cover border border-cyan-500/60 shadow-md shadow-cyan-900/30 shrink-0"
             />
-            <div className="flex items-center gap-2">
-              <span className="font-black text-sm md:text-base uppercase tracking-wider text-white">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2.5 min-w-0">
+              <span className="font-black text-sm sm:text-base md:text-lg uppercase tracking-wider text-white leading-tight truncate">
                 Quyền bán vé CGV
               </span>
-              <span className="px-2.5 py-0.5 rounded-md bg-gradient-to-r from-red-950/80 to-cyan-950/80 text-cyan-300 border border-cyan-500/60 text-xs font-bold tracking-wide">
+              <span className="self-start sm:self-auto px-2 py-0.5 rounded-md bg-gradient-to-r from-red-950/80 to-cyan-950/80 text-cyan-300 border border-cyan-500/60 text-[10px] sm:text-xs font-bold tracking-wide whitespace-nowrap">
                 Rẻ hơn ngoài rạp
               </span>
             </div>
@@ -59,11 +59,11 @@ export default function App() {
           <button
             type="button"
             onClick={handleReset}
-            className="px-3 py-1.5 rounded-lg border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5"
+            className="px-3 py-1.5 rounded-lg border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5 shrink-0 shadow-sm"
             title="Đặt lại tính toán"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
-            ĐẶT LẠI
+            <RotateCcw className="w-3.5 h-3.5 text-zinc-400" />
+            <span>ĐẶT LẠI</span>
           </button>
         </div>
       </header>
