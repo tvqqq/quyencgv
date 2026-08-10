@@ -1,13 +1,13 @@
 import React from 'react';
 
 export const Footer: React.FC = () => {
-  const version = 'v1.1.0';
+  const version = 'v1.4.0';
 
   return (
-    <footer className="mt-6 border-t border-zinc-800/80 bg-zinc-900/40 py-3 px-4 rounded-xl flex items-center justify-center">
-      <div className="font-mono px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 font-bold text-xs tracking-wider">
+    <footer className="mt-6 border-t border-zinc-800/60 py-3 px-4 flex items-center justify-center">
+      <span className="font-mono text-zinc-500 font-bold text-xs tracking-wider">
         {version}
-      </div>
+      </span>
     </footer>
   );
 };

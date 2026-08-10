@@ -44,14 +44,14 @@ export default function App() {
             <img
               src={quyenLogoImg}
               alt="Logo Quyền bán vé CGV"
-              className="w-8 h-8 rounded-lg object-cover border border-amber-500/50 shadow-md shadow-red-900/30"
+              className="w-8 h-8 rounded-lg object-cover border border-cyan-500/60 shadow-md shadow-cyan-900/30"
             />
             <div className="flex items-center gap-2">
               <span className="font-black text-sm md:text-base uppercase tracking-wider text-white">
                 Quyền bán vé CGV
               </span>
-              <span className="px-2 py-0.5 rounded bg-[#E71A0F]/20 text-[#FF2E4D] border border-[#E71A0F]/50 text-xs font-black uppercase">
-                GIẢM 20%
+              <span className="px-2.5 py-0.5 rounded-md bg-gradient-to-r from-red-950/80 to-cyan-950/80 text-cyan-300 border border-cyan-500/60 text-xs font-bold tracking-wide">
+                Rẻ hơn ngoài rạp
               </span>
             </div>
           </div>

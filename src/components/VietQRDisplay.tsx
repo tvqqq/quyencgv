@@ -94,7 +94,7 @@ export const VietQRDisplay: React.FC<VietQRDisplayProps> = ({
         </div>
 
         {/* CYAN ALERT WARNING BELOW TITLE */}
-        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-cyan-950/80 text-cyan-300 border border-cyan-500/70 text-xs font-extrabold uppercase tracking-wider shadow-sm">
+        <div className="flex items-center gap-2.5 px-4 py-3 md:py-3.5 rounded-xl bg-cyan-950/80 text-cyan-300 border border-cyan-500/70 text-xs md:text-sm font-extrabold tracking-wide shadow-sm">
           <AlertTriangle className="w-4 h-4 text-cyan-400 shrink-0 animate-pulse" />
           <span>Cần nhắn Quyền check lại vé trước khi chuyển khoản</span>
         </div>
