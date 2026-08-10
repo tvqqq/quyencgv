@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Footer: React.FC = () => {
-  const version = 'v1.0.0';
+  const version = 'v1.1.0';
 
   return (
     <footer className="mt-6 border-t border-zinc-800/80 bg-zinc-900/40 py-3 px-4 rounded-xl flex items-center justify-center">

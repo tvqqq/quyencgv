@@ -4,6 +4,7 @@ import { TicketInput } from './components/TicketInput';
 import { ComboSelector } from './components/ComboSelector';
 import { VietQRDisplay } from './components/VietQRDisplay';
 import { Footer } from './components/Footer';
+import quyenLogoImg from './assets/images/quyen_cgv_logo_1786336898627.jpg';
 
 export default function App() {
   const [ticketPrice, setTicketPrice] = useState<number>(490000);
@@ -40,9 +41,11 @@ export default function App() {
       <header className="bg-[#121212] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
         <div className="max-w-4xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gradient-to-br from-[#E71A0F] via-[#FF2E4D] to-[#FFB800] text-white flex items-center justify-center font-black text-base rounded-lg shadow-md shadow-red-900/30">
-              Q
-            </div>
+            <img
+              src={quyenLogoImg}
+              alt="Logo Quyền bán vé CGV"
+              className="w-8 h-8 rounded-lg object-cover border border-amber-500/50 shadow-md shadow-red-900/30"
+            />
             <div className="flex items-center gap-2">
               <span className="font-black text-sm md:text-base uppercase tracking-wider text-white">
                 Quyền bán vé CGV
