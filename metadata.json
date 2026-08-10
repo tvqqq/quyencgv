@@ -1,0 +1,6 @@
+{
+  "name": "Tính Tiền Vé CGV & VietQR",
+  "description": "Công cụ tính tiền vé phim CGV giảm giá 20%, combo bắp nước và tạo mã VietQR thanh toán tự động.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
