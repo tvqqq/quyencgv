@@ -6,11 +6,15 @@ import { CGVAppGuide } from './CGVAppGuide';
 interface TicketInputProps {
   ticketPrice: number;
   onTicketPriceChange: (price: number) => void;
+  ticketCount: number;
+  onTicketCountChange: (count: number) => void;
 }
 
 export const TicketInput: React.FC<TicketInputProps> = ({
   ticketPrice,
   onTicketPriceChange,
+  ticketCount,
+  onTicketCountChange,
 }) => {
   const discountedTicketPrice = Math.round(ticketPrice * 0.8);
   const ticketSavings = ticketPrice - discountedTicketPrice;
@@ -49,9 +53,33 @@ export const TicketInput: React.FC<TicketInputProps> = ({
         {/* Left Column: Input and Live Calc */}
         <div className="md:col-span-7 flex flex-col justify-between space-y-3">
           <div className="space-y-1.5">
-            <label className="block text-xs md:text-sm font-bold uppercase tracking-wider text-amber-400">
-              Tổng tiền vé gốc hiển thị trên App CGV hoặc MoMo (VNĐ)
-            </label>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <label className="block text-xs md:text-sm font-bold uppercase tracking-wider text-amber-400">
+                Tổng tiền vé gốc (App CGV / MoMo)
+              </label>
+              <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-700/80 rounded-lg py-0.5 px-2">
+                <span className="text-[11px] font-bold text-zinc-400 uppercase mr-1">Số vé:</span>
+                <button
+                  type="button"
+                  onClick={() => onTicketCountChange(Math.max(1, ticketCount - 1))}
+                  className="w-5 h-5 rounded bg-zinc-800 text-zinc-200 hover:text-white hover:bg-zinc-700 flex items-center justify-center font-bold text-xs"
+                  title="Giảm số vé"
+                >
+                  -
+                </button>
+                <span className="w-5 text-center font-mono font-black text-amber-400 text-xs">
+                  {ticketCount}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onTicketCountChange(ticketCount + 1)}
+                  className="w-5 h-5 rounded bg-zinc-800 text-zinc-200 hover:text-white hover:bg-zinc-700 flex items-center justify-center font-bold text-xs"
+                  title="Tăng số vé"
+                >
+                  +
+                </button>
+              </div>
+            </div>
             <div className="relative">
               <input
                 type="text"

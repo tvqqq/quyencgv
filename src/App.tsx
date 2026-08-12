@@ -8,6 +8,7 @@ import quyenLogoImg from './assets/images/quyen_cgv_logo_1786336898627.jpg';
 
 export default function App() {
   const [ticketPrice, setTicketPrice] = useState<number>(490000);
+  const [ticketCount, setTicketCount] = useState<number>(2);
   const [combo1Qty, setCombo1Qty] = useState<number>(0);
   const [combo2Qty, setCombo2Qty] = useState<number>(0);
 
@@ -31,6 +32,7 @@ export default function App() {
 
   const handleReset = () => {
     setTicketPrice(490000);
+    setTicketCount(2);
     setCombo1Qty(0);
     setCombo2Qty(0);
   };
@@ -74,6 +76,8 @@ export default function App() {
         <TicketInput
           ticketPrice={ticketPrice}
           onTicketPriceChange={setTicketPrice}
+          ticketCount={ticketCount}
+          onTicketCountChange={setTicketCount}
         />
 
         {/* Step 2: Popcorn & Drinks Combos */}
@@ -92,6 +96,7 @@ export default function App() {
           totalCombosPrice={calculation.totalCombosPrice}
           combo1Qty={calculation.combo1Qty}
           combo2Qty={calculation.combo2Qty}
+          ticketCount={ticketCount}
         />
 
         {/* Footer with version v1.4.0 */}

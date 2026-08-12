@@ -21,6 +21,7 @@ interface VietQRDisplayProps {
   totalCombosPrice: number;
   combo1Qty: number;
   combo2Qty: number;
+  ticketCount?: number;
 }
 
 export const VietQRDisplay: React.FC<VietQRDisplayProps> = ({
@@ -29,12 +30,13 @@ export const VietQRDisplay: React.FC<VietQRDisplayProps> = ({
   totalCombosPrice,
   combo1Qty,
   combo2Qty,
+  ticketCount = 2,
 }) => {
   const accountNumber = '151618';
   const bankName = 'Techcombank';
   const accountHolder = 'TAT VI QUYEN';
 
-  const bankAIPasteString = `Stk 151618 - Ngân hàng Techcombank - Số tiền: ${grandTotal}đ`;
+  const billText = `- Giá ${ticketCount} vé: ${discountedTicketPrice.toLocaleString('vi-VN')}đ\n- Combo bắp nước: ${totalCombosPrice.toLocaleString('vi-VN')}đ\n- Tổng cộng: ${grandTotal.toLocaleString('vi-VN')}đ\n---\nSTK: Techcombank 151618`;
 
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [imageLoading, setImageLoading] = useState(true);
@@ -203,65 +205,21 @@ export const VietQRDisplay: React.FC<VietQRDisplayProps> = ({
           </div>
         </div>
 
-        {/* Column 2: Bank Account Details & Bank AI Paste */}
+        {/* Column 2: Bill Copy-Paste Box */}
         <div className="md:col-span-7 space-y-3 font-mono">
-          {/* Account Details */}
-          <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-2.5">
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-zinc-400 font-sans uppercase font-bold flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-[#E71A0F]" /> Ngân hàng
-              </span>
-              <span className="font-extrabold text-white">{bankName}</span>
-            </div>
-
-            <div className="flex items-center justify-between text-xs pt-2 border-t border-zinc-800">
-              <span className="text-zinc-400 font-sans uppercase font-bold flex items-center gap-1.5">
-                <CreditCard className="w-3.5 h-3.5 text-[#E71A0F]" /> Số tài khoản
-              </span>
-              <div className="flex items-center gap-2">
-                <span className="font-black text-[#FFB800] text-base">{accountNumber}</span>
-                <button
-                  type="button"
-                  onClick={() => handleCopy(accountNumber, 'acc')}
-                  className="p-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white transition-all"
-                  title="Sao chép STK"
-                >
-                  {copiedField === 'acc' ? (
-                    <Check className="w-3.5 h-3.5 text-emerald-400 stroke-[3]" />
-                  ) : (
-                    <Copy className="w-3.5 h-3.5" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between text-xs pt-2 border-t border-zinc-800">
-              <span className="text-zinc-400 font-sans uppercase font-bold flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#E71A0F]" /> Chủ tài khoản
-              </span>
-              <span className="font-extrabold text-white">{accountHolder}</span>
-            </div>
-          </div>
-
-          {/* BANK AI PASTE BOX */}
-          <div className="p-4 rounded-xl bg-gradient-to-r from-zinc-900 via-[#18181B] to-zinc-900 border border-amber-500/50 space-y-2.5 shadow-md">
-            <label className="text-xs font-extrabold uppercase tracking-wider text-amber-300 font-sans flex items-center gap-1.5">
-              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              Thông tin chuyển khoản (Bank AI Paste):
-            </label>
-
-            {/* Side-by-side Input Text and Copy Button */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <div className="p-2.5 bg-black rounded-lg border border-zinc-700 text-xs font-mono font-bold text-yellow-300 flex-1 leading-relaxed break-words whitespace-normal">
-                <span className="select-all tracking-wide">{bankAIPasteString}</span>
-              </div>
+          <div className="p-4 rounded-xl bg-gradient-to-r from-zinc-900 via-[#18181B] to-zinc-900 border border-amber-500/50 space-y-3 shadow-md">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <label className="text-xs font-extrabold uppercase tracking-wider text-amber-300 font-sans flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                Bill thanh toán (Copy nhanh):
+              </label>
 
               <button
                 type="button"
-                onClick={() => handleCopy(bankAIPasteString, 'bank_ai')}
-                className="py-2.5 px-3.5 bg-gradient-to-r from-[#E71A0F] via-[#FF2E4D] to-[#E71A0F] hover:from-red-600 hover:to-red-700 text-white font-sans text-xs font-black uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-md shadow-red-900/30"
+                onClick={() => handleCopy(billText, 'bill')}
+                className="py-2 px-3.5 bg-gradient-to-r from-[#E71A0F] via-[#FF2E4D] to-[#E71A0F] hover:from-red-600 hover:to-red-700 text-white font-sans text-xs font-black uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-md shadow-red-900/30"
               >
-                {copiedField === 'bank_ai' ? (
+                {copiedField === 'bill' ? (
                   <>
                     <Check className="w-4 h-4 text-white stroke-[3]" />
                     <span>Đã chép!</span>
@@ -269,10 +227,15 @@ export const VietQRDisplay: React.FC<VietQRDisplayProps> = ({
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    <span>Sao chép</span>
+                    <span>Sao chép Bill</span>
                   </>
                 )}
               </button>
+            </div>
+
+            {/* Preformatted Bill Box */}
+            <div className="p-3.5 bg-black rounded-lg border border-zinc-700/90 text-xs sm:text-sm font-mono font-bold text-yellow-300 leading-relaxed whitespace-pre-wrap select-all">
+              {billText}
             </div>
           </div>
         </div>
